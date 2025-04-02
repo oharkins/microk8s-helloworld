@@ -1,19 +1,19 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: lapp-ingress
-  namespace: lapp-stack
+  name: pen-ingress
+  namespace: pen-stack
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: lapp.local
+  - host: pen.local
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: php-app
+            name: pen-app
             port:
               number: 8080 
