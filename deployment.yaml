@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: php-app
-        image: php-app:latest
+        image: oharkins/php-app:latest
         ports:
         - containerPort: 80
         resources:
