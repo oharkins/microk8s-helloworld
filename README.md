@@ -67,9 +67,9 @@ docker push oharkins/pen-stack:latest
 
 5. Deploy the application:
 ```bash
-kubectl apply -f express-app.yaml
-kubectl apply -f service.yaml
-kubectl apply -f ingress.yaml
+microk8s kubectl apply -f express-app.yaml
+microk8s kubectl apply -f service.yaml
+microk8s kubectl apply -f ingress.yaml
 ```
 
 ## Project Structure
@@ -105,17 +105,9 @@ kubectl apply -f ingress.yaml
 To check the status of the deployments:
 
 ```bash
-kubectl get pods -n pen-stack
-kubectl get services -n pen-stack
-kubectl get ingress -n pen-stack
-```
-
-## Rebuild
-
-# rebuild roleout
-
-```bash
-microk8s kubectl rollout restart deployment pen-app -n pen-stack
+microk8s kubectl get pods -n pen-stack
+microk8s kubectl get services -n pen-stack
+microk8s kubectl get ingress -n pen-stack
 ```
 
 ## Cleanup
@@ -123,6 +115,5 @@ microk8s kubectl rollout restart deployment pen-app -n pen-stack
 To remove the entire stack:
 
 ```bash
-kubectl delete namespace pen-stack
+microk8s kubectl delete namespace pen-stack
 ``` 
-
