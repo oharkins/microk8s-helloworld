@@ -22,8 +22,12 @@ COPY --from=builder /usr/src/app/node_modules ./node_modules
 # Copy application files
 COPY . .
 
-# Create non-root user
-RUN useradd -m -u 1000 appuser \
+# Create non-root user with a different UID if 1000 is taken
+RUN if getent passwd 1000; then \
+        useradd -m -u 1001 appuser; \
+    else \
+        useradd -m -u 1000 appuser; \
+    fi \
     && chown -R appuser:appuser /usr/src/app
 
 # Switch to non-root user
