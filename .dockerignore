@@ -1,0 +1,13 @@
+.git
+.gitignore
+*.md
+*.yaml
+.env
+*.log
+.DS_Store 
+*.pem
+*.crt
+*.key
+*.csr
+*.cnf
+*.csr
