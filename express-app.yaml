@@ -23,22 +23,22 @@ spec:
         - name: DB_HOST
           valueFrom:
             secretKeyRef:
-              name: postgres-secrets
+              name: db-credentials
               key: host
         - name: DB_NAME
           valueFrom:
             secretKeyRef:
-              name: postgres-secrets
+              name: db-credentials
               key: database
         - name: DB_USER
           valueFrom:
             secretKeyRef:
-              name: postgres-secrets
+              name: db-credentials
               key: username
         - name: DB_PASS
           valueFrom:
             secretKeyRef:
-              name: postgres-secrets
+              name: db-credentials
               key: password
         resources:
           requests:
@@ -51,7 +51,7 @@ spec:
           httpGet:
             path: /
             port: 8080
-          initialDelaySeconds: 5
+          initialDelaySeconds: 10
           periodSeconds: 10
         livenessProbe:
           httpGet:

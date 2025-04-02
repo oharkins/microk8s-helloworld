@@ -8,9 +8,9 @@ const port = process.env.PORT || 8080;
 // Database configuration
 const dbConfig = {
     host: process.env.DB_HOST || 'postgres',
-    database: process.env.DB_NAME || 'lapp_db',
-    user: process.env.DB_USER || 'lapp_user',
-    password: process.env.DB_PASS || 'lapp_password',
+    database: process.env.DB_NAME || 'pen_db',
+    user: process.env.DB_USER || 'pen_user',
+    password: process.env.DB_PASS || 'pen_password',
     port: 5432
 };
 

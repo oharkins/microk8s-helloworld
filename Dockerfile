@@ -1,5 +1,5 @@
-# Use Node.js LTS version
-FROM node:20-slim
+# Build stage
+FROM node:20-slim AS builder
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -8,7 +8,16 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 # Install dependencies
-RUN npm install
+RUN npm ci --only=production
+
+# Production stage
+FROM node:20-slim
+
+# Create app directory
+WORKDIR /usr/src/app
+
+# Copy built dependencies from builder
+COPY --from=builder /usr/src/app/node_modules ./node_modules
 
 # Copy application files
 COPY . .
