@@ -110,6 +110,14 @@ kubectl get services -n pen-stack
 kubectl get ingress -n pen-stack
 ```
 
+## Rebuild
+
+# rebuild roleout
+
+```bash
+microk8s kubectl rollout restart deployment pen-app -n pen-stack
+```
+
 ## Cleanup
 
 To remove the entire stack:
@@ -117,3 +125,4 @@ To remove the entire stack:
 ```bash
 kubectl delete namespace pen-stack
 ``` 
+
