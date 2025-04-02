@@ -28,6 +28,10 @@ RUN chown appuser:appuser /var/www/html/index.php
 # Enable Apache modules
 RUN a2enmod rewrite
 
+# Configure Apache to listen on port 8080
+RUN sed -i 's/Listen 80/Listen 8080/' /etc/apache2/ports.conf \
+    && sed -i 's/:80/:8080/' /etc/apache2/sites-enabled/*.conf
+
 # Switch to non-root user
 USER appuser
 

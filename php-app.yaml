@@ -27,7 +27,7 @@ spec:
             cpu: "250m"
             memory: "256Mi"
         ports:
-        - containerPort: 80
+        - containerPort: 8080
         env:
         - name: DB_HOST
           valueFrom:
@@ -52,13 +52,13 @@ spec:
         livenessProbe:
           httpGet:
             path: /
-            port: 80
+            port: 8080
           initialDelaySeconds: 5
           periodSeconds: 10
         readinessProbe:
           httpGet:
             path: /
-            port: 80
+            port: 8080
           initialDelaySeconds: 5
           periodSeconds: 10
         volumeMounts:
@@ -80,6 +80,6 @@ spec:
   selector:
     app: php-app
   ports:
-  - port: 80
-    targetPort: 80
+  - port: 8080
+    targetPort: 8080
   type: ClusterIP 

@@ -31,13 +31,9 @@ kubectl apply -f ingress.yaml
 2. Build and push the PHP application image:
 
 ```bash
-# For ARM64 architecture (Apple Silicon/M1/M2/M4)
-docker buildx build --platform linux/arm64 -t docker.io/oharkins/lapp-php:latest .
-docker push docker.io/oharkins/lapp-php:latest
-
 # For AMD64 architecture (Intel/AMD)
-docker buildx build --platform linux/amd64 -t docker.io/oharkins/lapp-php:latest .
-docker push docker.io/oharkins/lapp-php:latest
+docker buildx build --platform linux/amd64,linux/arm64 -t oharkins/lapp-php:latest .
+docker push oharkins/lapp-php:latest
 ```
 
 3. Update the PHP application deployment to use your image:
