@@ -1,10 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: php-app-service
+  name: pen-app-service
+  namespace: pen-stack
 spec:
   selector:
-    app: php-app
+    app: pen-app
   ports:
     - protocol: TCP
       port: 8080
