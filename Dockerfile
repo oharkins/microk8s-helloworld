@@ -23,7 +23,8 @@ RUN useradd -m -u 1000 appuser \
 # Copy the application files
 COPY --from=builder /usr/local/lib/php/extensions/ /usr/local/lib/php/extensions/
 COPY index.php /var/www/html/
-RUN chown appuser:appuser /var/www/html/index.php
+RUN chown -R www-data:www-data /var/www/html \
+    && chmod -R 755 /var/www/html
 
 # Enable Apache modules
 RUN a2enmod rewrite
@@ -33,7 +34,7 @@ RUN sed -i 's/Listen 80/Listen 8080/' /etc/apache2/ports.conf \
     && sed -i 's/<VirtualHost \*:80>/<VirtualHost *:8080>/' /etc/apache2/sites-enabled/*.conf
 
 # Switch to non-root user
-USER appuser
+USER www-data
 
 # Add labels
 LABEL maintainer="Odis Harkins <odisjamesharkins@gmail.com>"
