@@ -1,7 +1,13 @@
+node_modules
+npm-debug.log
 .git
 .gitignore
 *.md
 *.yaml
+*.yml
+*.json
+!package.json
+!package-lock.json
 .env
 *.log
 .DS_Store 
